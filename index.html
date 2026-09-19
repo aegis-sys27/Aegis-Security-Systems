@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AEGIS Security Systems | Sisteme de securitate și control acces, Constanța</title>
-<meta name="description" content="AEGIS Security Systems instalează sisteme de alarmă antiefracție Hikvision AX PRO, supraveghere video 4K HiLook, control acces și automatizări porți în Constanța.">
-<meta name="theme-color" content="#050505">
+<meta name="description" content="AEGIS Security Systems instalează sisteme profesionale de alarmă antiefracție Hikvision AX PRO, supraveghere video 4K HiLook, control acces și automatizări porți în Constanța.">
+<meta name="theme-color" content="#030708">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:title" content="AEGIS Security Systems | Sisteme inteligente pentru un spațiu protejat">
 <meta property="og:description" content="Alarmă antiefracție, supraveghere video IP 4K, videointerfonie și automatizări porți. Constanța și împrejurimi.">
-<link rel="icon" href="logo.jpg">
+
+<!-- Favicon stabilizat (elimină rotația infinită la încărcare) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23050b0e' stroke='%231CCFC0' stroke-width='2'/%3E%3Cpolygon points='16,7 24,12 24,20 16,25 8,20 8,12' fill='none' stroke='%231CCFC0' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%231CCFC0'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,18 +41,19 @@
 
 <style>
 :root{
-  --ink:#040607;
-  --panel:#0a0e11;
-  --panel-2:#10161b;
-  --panel-card:#0e1317;
-  --line:#1c252b;
+  --ink:#030708;
+  --panel:#080d10;
+  --panel-2:#0f161b;
+  --panel-card:#0b1216;
+  --steel-bg:#121a20;
+  --steel-border:#202c34;
+  --line:#16222a;
   --silver:#C8D0D5;
-  --grey:#8B969D;
+  --grey:#85939b;
   --teal:#1CCFC0;
   --teal-glow:rgba(28, 207, 192, 0.45);
+  --teal-glow-strong:rgba(28, 207, 192, 0.75);
   --teal-deep:#086A64;
-  --paper:#E2E6E8;
-  --paper-line:rgba(5,5,5,.2);
   --font-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --font-body:"IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif;
 }
@@ -67,18 +70,45 @@ body{
   position:relative;
 }
 
-/* Fundal conexiuni digitale estompate */
-body::before{
-  content:"";
+/* Conexiuni digitale vii pe fundal */
+.bg-circuit{
   position:fixed;
   inset:0;
   z-index:-1;
   pointer-events:none;
-  background-image: 
-    radial-gradient(circle at 50% 20%, rgba(28,207,192,0.06), transparent 60%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%231CCFC0' stroke-width='0.7' stroke-opacity='0.1'%3E%3Cpath d='M0 80h45l15-20h40l20 20h40'/%3E%3Cpath d='M80 0v40l20 20v40l-20 20v40'/%3E%3Ccircle cx='60' cy='60' r='3' fill='%231CCFC0' fill-opacity='0.15'/%3E%3Ccircle cx='100' cy='60' r='3' fill='%231CCFC0' fill-opacity='0.15'/%3E%3Ccircle cx='120' cy='80' r='2' fill='%231CCFC0' fill-opacity='0.15'/%3E%3Ccircle cx='80' cy='120' r='3' fill='%231CCFC0' fill-opacity='0.15'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat:repeat;
-  opacity:0.85;
+  background: radial-gradient(circle at 50% 15%, rgba(28,207,192,0.08), transparent 70%), var(--ink);
+  overflow:hidden;
+}
+.circuit-svg{
+  width:100%;
+  height:100%;
+  opacity:0.22;
+}
+.circuit-line{
+  stroke:#1CCFC0;
+  stroke-width:1;
+  fill:none;
+  stroke-dasharray:10 150;
+  animation:dataFlow 14s linear infinite;
+}
+.circuit-line-fast{
+  stroke:#52fff1;
+  stroke-width:1.2;
+  fill:none;
+  stroke-dasharray:15 220;
+  animation:dataFlow 9s linear infinite;
+}
+.node{
+  fill:#1CCFC0;
+  animation:pulseNode 3s ease-in-out infinite alternate;
+}
+@keyframes dataFlow{
+  0%{stroke-dashoffset:1000}
+  100%{stroke-dashoffset:0}
+}
+@keyframes pulseNode{
+  0%{opacity:0.25;r:2.5}
+  100%{opacity:0.85;r:4.5;filter:drop-shadow(0 0 6px #1CCFC0)}
 }
 
 img,svg{max-width:100%;display:block}
@@ -88,49 +118,142 @@ h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:700}
 h3{font-size:1.25rem;font-weight:600}
 p{margin:0}
 :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
-.wrap{width:100%;max-width:1180px;margin-inline:auto;padding-inline:clamp(20px,4vw,40px)}
+.wrap{width:100%;max-width:1220px;margin-inline:auto;padding-inline:clamp(20px,4vw,40px)}
 .skip{position:absolute;left:-999px;top:8px;background:var(--teal);color:#000;padding:10px 16px;z-index:100;font-weight:600}
 .skip:focus{left:8px}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--font-body);text-decoration:none;padding:15px 24px;border:1.5px solid transparent;border-radius:4px;cursor:pointer;transition:all .2s ease}
+/* Butoane */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--font-body);text-decoration:none;padding:15px 24px;border:1.5px solid transparent;border-radius:4px;cursor:pointer;transition:all .25s ease}
 .btn svg{width:20px;height:20px;flex:none}
-.btn-primary{background:var(--teal);color:#001513;box-shadow:0 0 15px rgba(28,207,192,0.25)}
-.btn-primary:hover{background:#4fe3d6;box-shadow:0 0 25px rgba(28,207,192,0.45);transform:translateY(-1px)}
-.btn-ghost{border-color:#3a454b;color:#fff;background:rgba(255,255,255,0.02)}
-.btn-ghost:hover{border-color:var(--teal);color:var(--teal);box-shadow:0 0 15px rgba(28,207,192,0.15)}
-.btn-sm{padding:10px 16px;font-size:.9rem}
+.btn-primary{background:var(--teal);color:#001513;box-shadow:0 0 16px rgba(28,207,192,0.35)}
+.btn-primary:hover{background:#4fe3d6;box-shadow:0 0 26px rgba(28,207,192,0.65);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--steel-border);color:#fff;background:rgba(28,207,192,0.03)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);box-shadow:0 0 16px rgba(28,207,192,0.2);background:rgba(28,207,192,0.06)}
+.btn-sm{padding:10px 18px;font-size:.9rem}
 
-/* Header & Siglă */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(4,6,7,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.header-row{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px;padding-block:8px}
+/* Header & Tab-uri luminoase sus */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(3,7,8,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-row{display:flex;align-items:center;justify-content:space-between;min-height:80px;gap:20px;padding-block:8px}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
-.brand-logo-wrap{position:relative;width:50px;height:50px;flex:none;border-radius:50%;padding:2px;background:radial-gradient(circle, rgba(28,207,192,0.4) 0%, transparent 80%)}
-.brand-img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:1.5px solid rgba(28,207,192,0.6);filter:drop-shadow(0 0 8px rgba(28,207,192,0.35))}
+.brand-logo-wrap{position:relative;width:48px;height:48px;flex:none;border-radius:50%;padding:2px;background:radial-gradient(circle, rgba(28,207,192,0.5) 0%, transparent 80%)}
+.brand-img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:1.5px solid var(--teal);filter:drop-shadow(0 0 6px var(--teal-glow))}
 .brand-titles{display:flex;flex-direction:column}
 .brand-name{display:block;font-family:var(--font-display);font-stretch:115%;font-weight:800;font-size:1.45rem;letter-spacing:.12em;color:#fff;line-height:1}
 .brand-sub{display:block;font-size:0.58rem;font-weight:500;color:var(--grey);letter-spacing:.08em;margin-top:4px;line-height:1.1;text-transform:uppercase}
 
-.nav{display:flex;align-items:center;gap:24px}
-.nav a{text-decoration:none;font-size:.95rem;color:var(--silver);padding:6px 0;border-bottom:2px solid transparent;transition:all .2s ease}
-.nav a:hover{color:#fff;border-color:var(--teal);text-shadow:0 0 10px var(--teal-glow)}
-.nav .btn{color:#001513;border-color:transparent;padding:10px 18px}
-.nav .btn:hover{color:#001513;border-color:transparent}
-.menu-toggle{display:none;background:none;border:1.5px solid #3a454b;color:#fff;width:44px;height:44px;border-radius:4px;cursor:pointer}
+.nav{display:flex;align-items:center;gap:14px}
+.nav-tab{
+  text-decoration:none;
+  font-size:.92rem;
+  font-weight:500;
+  color:var(--silver);
+  padding:8px 15px;
+  border-radius:4px;
+  border:1px solid transparent;
+  background:rgba(255,255,255,0.015);
+  transition:all .25s ease;
+  position:relative;
+}
+.nav-tab:hover{
+  color:#fff;
+  background:rgba(28,207,192,0.08);
+  border-color:rgba(28,207,192,0.5);
+  box-shadow:0 0 14px var(--teal-glow);
+  text-shadow:0 0 8px rgba(28,207,192,0.5);
+}
+.nav-tab.active{
+  color:#fff;
+  border-color:var(--teal);
+  background:rgba(28,207,192,0.12);
+  box-shadow:0 0 18px var(--teal-glow);
+}
+.menu-toggle{display:none;background:none;border:1.5px solid var(--steel-border);color:#fff;width:44px;height:44px;border-radius:4px;cursor:pointer}
 .menu-toggle svg{width:22px;height:22px;margin:auto}
 
-/* Hero */
-.hero{position:relative;padding:clamp(48px,8vw,96px) 0 clamp(56px,8vw,96px);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(28,207,192,0.08);border:1px solid rgba(28,207,192,0.3);border-radius:20px;font-size:0.8rem;color:var(--teal);margin-bottom:18px;font-weight:600;letter-spacing:0.04em}
-.hero h1{font-size:clamp(2.4rem,5.2vw,4.4rem);font-weight:800;letter-spacing:-.025em;line-height:1.05}
-.hero-lead{margin-top:24px;font-size:1.15rem;max-width:34em;color:var(--silver)}
-.hero-actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px}
-.plan-wrap{border:1px solid var(--line);background:rgba(10,14,17,0.85);padding:clamp(12px,2vw,20px);border-radius:6px;box-shadow:0 15px 35px rgba(0,0,0,0.5)}
+/* Hero cu Sigla mare și Planul locuinței */
+.hero{position:relative;padding:clamp(40px,6vw,72px) 0 clamp(48px,6vw,84px);overflow:hidden}
+.hero-intro{max-width:820px;margin-bottom:44px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(28,207,192,0.08);border:1px solid rgba(28,207,192,0.3);border-radius:20px;font-size:0.82rem;color:var(--teal);margin-bottom:18px;font-weight:600;letter-spacing:0.04em}
+.hero h1{font-size:clamp(2.3rem,4.8vw,4rem);font-weight:800;letter-spacing:-.025em;line-height:1.06}
+.hero-lead{margin-top:18px;font-size:1.15rem;color:var(--silver);max-width:44em}
+.hero-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
+
+/* Grid vizual mare: Sigla în stânga, Planul în dreapta */
+.hero-showcase{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(24px,4vw,40px);
+  align-items:stretch;
+  margin-top:40px;
+}
+.logo-display-wrap{
+  border:1px solid var(--steel-border);
+  background:radial-gradient(circle at center, rgba(28,207,192,0.12) 0%, rgba(8,13,16,0.9) 75%);
+  padding:clamp(16px,2.5vw,28px);
+  border-radius:6px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.6), inset 0 0 30px rgba(28,207,192,0.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  min-height:440px;
+}
+.logo-display-wrap::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:7px;
+  padding:1px;
+  background:linear-gradient(135deg, rgba(28,207,192,0.6), transparent 60%, rgba(28,207,192,0.2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+}
+.logo-huge{
+  width:100%;
+  max-width:380px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:12px;
+  filter:drop-shadow(0 0 24px rgba(28,207,192,0.35));
+  animation:floatLogo 6s ease-in-out infinite alternate;
+}
+@keyframes floatLogo{
+  0%{transform:translateY(0) scale(1)}
+  100%{transform:translateY(-6px) scale(1.015)}
+}
+.logo-tagline{
+  margin-top:20px;
+  text-align:center;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:1.15rem;
+  letter-spacing:0.08em;
+  color:#fff;
+  text-shadow:0 0 12px var(--teal-glow);
+}
+.logo-subtagline{
+  font-size:0.85rem;
+  color:var(--grey);
+  margin-top:4px;
+}
+
+.plan-wrap{
+  border:1px solid var(--steel-border);
+  background:rgba(8,13,16,0.9);
+  padding:clamp(14px,2vw,24px);
+  border-radius:6px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.6);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
 .plan-cap{margin-top:12px;font-size:.85rem;color:var(--grey);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .plan{width:100%;height:auto}
 .plan text{font-family:var(--font-body);font-size:11.5px;fill:var(--grey)}
-.plan .room{font-size:12px;fill:#59646b}
+.plan .room{font-size:12px;fill:#637580}
 .plan .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.9s cubic-bezier(.6,0,.2,1) forwards}
 .plan .dev{opacity:0;animation:appear .5s ease forwards;animation-delay:var(--d,2s)}
 .plan .cone{opacity:0;animation:appear .9s ease forwards 2.4s}
@@ -147,30 +270,28 @@ p{margin:0}
 .band-item strong{display:block;font-family:var(--font-display);font-stretch:112%;font-weight:600;color:#fff;font-size:1.1rem}
 .band-item span{display:block;margin-top:4px;font-size:.92rem;color:var(--grey);line-height:1.45}
 
-/* Sections */
-.section{padding:clamp(64px,9vw,112px) 0}
-.on-paper{background:var(--paper);color:#1B2226}
-.on-paper h2,.on-paper h3{color:#050505}
+/* Sectiuni - Negru vs Gri-Antracit Tech */
+.section{padding:clamp(64px,8vw,104px) 0}
 .on-panel{background:var(--panel)}
-.intro-p{margin-top:20px;max-width:34em;color:var(--grey)}
-.on-paper .intro-p{color:#48545B}
+.on-steel{background:var(--steel-bg);border-block:1px solid var(--steel-border)}
+.intro-p{margin-top:18px;max-width:34em;color:var(--grey)}
 
-/* Services */
+/* Servicii (pe fundal Gri-Antracit Steel) */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:clamp(32px,6vw,88px);align-items:start}
 .split-side{position:sticky;top:110px}
 .svc{list-style:none;margin:0;padding:0}
-.svc li{display:grid;grid-template-columns:52px 1fr;gap:24px;padding:32px 0;border-top:1px solid var(--paper-line)}
-.svc li:last-child{border-bottom:1px solid var(--paper-line)}
-.svc-icon{width:52px;height:52px;background:#050505;color:var(--teal);display:grid;place-items:center;border-radius:4px}
+.svc li{display:grid;grid-template-columns:52px 1fr;gap:24px;padding:30px 0;border-top:1px solid var(--steel-border)}
+.svc li:last-child{border-bottom:1px solid var(--steel-border)}
+.svc-icon{width:52px;height:52px;background:var(--panel);border:1px solid var(--steel-border);color:var(--teal);display:grid;place-items:center;border-radius:4px;box-shadow:0 0 12px rgba(0,0,0,0.4)}
 .svc-icon svg{width:26px;height:26px}
-.svc p{margin-top:8px;color:#3B464D;max-width:38em}
-.svc .note{margin-top:10px;font-size:.9rem;font-weight:500;color:var(--teal-deep)}
+.svc p{margin-top:8px;color:var(--silver);max-width:38em}
+.svc .note{margin-top:10px;font-size:.9rem;font-weight:500;color:var(--teal)}
 
-/* TAB NOU: CATALOG ECHIPAMENTE & PRODUSE */
+/* Echipamente & Produse */
 .prod-nav{display:flex;gap:12px;margin-top:36px;border-bottom:1px solid var(--line);padding-bottom:16px;overflow-x:auto}
 .prod-tab-btn{
   background:rgba(255,255,255,0.02);
-  border:1px solid var(--line);
+  border:1px solid var(--steel-border);
   color:var(--silver);
   padding:12px 20px;
   font:600 0.95rem/1 var(--font-display);
@@ -186,13 +307,13 @@ p{margin:0}
 .prod-tab-btn:hover{
   border-color:rgba(28,207,192,0.6);
   color:#fff;
-  box-shadow:0 0 12px rgba(28,207,192,0.25);
+  box-shadow:0 0 14px var(--teal-glow);
 }
 .prod-tab-btn.active{
   background:rgba(28,207,192,0.12);
   border-color:var(--teal);
   color:#fff;
-  box-shadow:0 0 20px rgba(28,207,192,0.35);
+  box-shadow:0 0 22px var(--teal-glow-strong);
 }
 .prod-panel{display:none;margin-top:36px;animation:fadeIn .3s ease forwards}
 .prod-panel.active{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px}
@@ -200,7 +321,7 @@ p{margin:0}
 
 .prod-card{
   background:var(--panel-card);
-  border:1px solid var(--line);
+  border:1px solid var(--steel-border);
   border-radius:6px;
   padding:24px;
   display:flex;
@@ -212,8 +333,8 @@ p{margin:0}
 }
 .prod-card:hover{
   transform:translateY(-4px);
-  border-color:rgba(28,207,192,0.5);
-  box-shadow:0 10px 28px rgba(0,0,0,0.5), 0 0 16px rgba(28,207,192,0.18);
+  border-color:rgba(28,207,192,0.6);
+  box-shadow:0 12px 28px rgba(0,0,0,0.6), 0 0 20px rgba(28,207,192,0.22);
 }
 .prod-card::before{
   content:"";
@@ -238,7 +359,7 @@ p{margin:0}
   padding:4px 8px;
   border-radius:3px;
   margin-bottom:12px;
-  border:1px solid rgba(28,207,192,0.2);
+  border:1px solid rgba(28,207,192,0.25);
 }
 .prod-card h4{font-size:1.15rem;font-weight:700;color:#fff;line-height:1.25}
 .prod-card p{font-size:0.92rem;color:var(--silver);margin-top:10px;line-height:1.5}
@@ -246,7 +367,7 @@ p{margin:0}
 .prod-specs li{font-size:0.88rem;color:var(--grey);display:flex;align-items:flex-start;gap:8px}
 .prod-specs li::before{content:"▹";color:var(--teal);flex:none}
 
-/* Audience */
+/* Clienti */
 .aud{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:clamp(32px,6vw,88px);margin-top:48px}
 .tabs{display:flex;flex-direction:column;border-left:1px solid var(--line)}
 .tab{
@@ -263,51 +384,51 @@ p{margin:0}
   transition:all .25s ease;
 }
 .tab small{display:block;font:400 .9rem/1.4 var(--font-body);margin-top:4px;color:var(--grey)}
-.tab:hover{color:#fff;background:rgba(28,207,192,0.03)}
+.tab:hover{color:#fff;background:rgba(28,207,192,0.04)}
 .tab[aria-selected="true"]{
   color:#fff;
   border-left-color:var(--teal);
   background:var(--panel-2);
-  box-shadow:inset 4px 0 15px -4px var(--teal-glow);
+  box-shadow:inset 4px 0 16px -4px var(--teal-glow);
 }
-.tabpanel{border:1px solid var(--line);background:var(--panel);padding:clamp(24px,4vw,44px);border-radius:4px}
+.tabpanel{border:1px solid var(--steel-border);background:var(--panel);padding:clamp(24px,4vw,44px);border-radius:4px}
 .tabpanel[hidden]{display:none}
 .tabpanel h3{font-size:1.7rem;font-weight:700}
-.tabpanel .lead{margin-top:14px;max-width:34em}
+.tabpanel .lead{margin-top:14px;max-width:34em;color:var(--silver)}
 .checks{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
-.checks li{position:relative;padding-left:34px}
+.checks li{position:relative;padding-left:34px;color:var(--silver)}
 .checks li::before{content:"";position:absolute;left:0;top:.35em;width:18px;height:18px;border:1.5px solid var(--teal);border-radius:2px}
 .checks li::after{content:"";position:absolute;left:6px;top:calc(.35em + 3px);width:5px;height:9px;border:solid var(--teal);border-width:0 2px 2px 0;transform:rotate(40deg)}
 
-/* Process */
+/* Proces */
 .steps{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:s}
 .steps li{position:relative;padding:34px 22px 0 0;counter-increment:s}
-.steps li::before{content:"";position:absolute;top:13px;left:0;right:0;height:1px;background:var(--line)}
-.steps li::after{content:counter(s);position:absolute;top:0;left:0;width:28px;height:28px;display:grid;place-items:center;background:var(--ink);border:1.5px solid var(--teal);color:var(--teal);font:600 .85rem/1 var(--font-body);border-radius:50%;box-shadow:0 0 10px rgba(28,207,192,0.3)}
+.steps li::before{content:"";position:absolute;top:13px;left:0;right:0;height:1px;background:var(--steel-border)}
+.steps li::after{content:counter(s);position:absolute;top:0;left:0;width:28px;height:28px;display:grid;place-items:center;background:var(--ink);border:1.5px solid var(--teal);color:var(--teal);font:600 .85rem/1 var(--font-body);border-radius:50%;box-shadow:0 0 10px var(--teal-glow)}
 .steps h3{font-size:1.1rem;margin-bottom:10px}
 .steps p{font-size:.95rem;color:var(--grey);line-height:1.55}
 
-/* Credentials */
+/* Calificări (pe Gri-Antracit Steel) */
 .creds{list-style:none;margin:0;padding:0}
-.creds li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) auto;gap:8px 32px;padding:22px 0;border-top:1px solid var(--paper-line);align-items:baseline}
-.creds li:last-child{border-bottom:1px solid var(--paper-line)}
+.creds li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) auto;gap:8px 32px;padding:22px 0;border-top:1px solid var(--steel-border);align-items:baseline}
+.creds li:last-child{border-bottom:1px solid var(--steel-border)}
 .creds h3{font-size:1.1rem}
-.creds p{color:#3B464D;font-size:.98rem}
-.creds .yr{font-size:.92rem;font-weight:600;color:var(--teal-deep);white-space:nowrap}
+.creds p{color:var(--silver);font-size:.98rem}
+.creds .yr{font-size:.92rem;font-weight:600;color:var(--teal);white-space:nowrap}
 
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,6vw,88px);margin-top:8px}
 .contact-list{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:26px}
 .contact-list dt,.contact-list .k{font-size:.88rem;color:var(--grey);margin-bottom:4px;display:block}
 .contact-list a,.contact-list .v{font-family:var(--font-display);font-stretch:108%;font-weight:600;font-size:1.35rem;color:#fff;text-decoration:none;overflow-wrap:anywhere}
-.contact-list a:hover{color:var(--teal);text-shadow:0 0 10px var(--teal-glow)}
-.contact-list .plain{font-family:var(--font-body);font-weight:500;font-size:1.05rem}
-.form{border:1px solid var(--line);background:var(--panel);padding:clamp(22px,3.5vw,40px);display:grid;gap:20px;border-radius:4px}
+.contact-list a:hover{color:var(--teal);text-shadow:0 0 12px var(--teal-glow)}
+.contact-list .plain{font-family:var(--font-body);font-weight:500;font-size:1.05rem;color:var(--silver)}
+.form{border:1px solid var(--steel-border);background:var(--panel);padding:clamp(22px,3.5vw,40px);display:grid;gap:20px;border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,0.5)}
 .field label{display:block;font-size:.92rem;font-weight:500;color:#fff;margin-bottom:8px}
-.field input,.field select,.field textarea{width:100%;font:400 1rem/1.4 var(--font-body);color:#fff;background:var(--ink);border:1.5px solid #2E383E;border-radius:3px;padding:14px 14px;transition:border-color .2s, box-shadow .2s}
+.field input,.field select,.field textarea{width:100%;font:400 1rem/1.4 var(--font-body);color:#fff;background:var(--ink);border:1.5px solid var(--steel-border);border-radius:4px;padding:14px;transition:border-color .2s, box-shadow .2s}
 .field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--silver) 50%),linear-gradient(135deg,var(--silver) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
 .field textarea{min-height:130px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 12px rgba(28,207,192,0.3)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 14px var(--teal-glow)}
 .field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#ff8a7a}
 .err{color:#ff9d8f;font-size:.88rem;margin-top:6px;min-height:0}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -315,18 +436,18 @@ p{margin:0}
 .form-note{font-size:.85rem;color:var(--grey)}
 
 /* Footer */
-.footer{border-top:1px solid var(--line);padding:48px 0 40px;font-size:.92rem;color:var(--grey);background:var(--ink)}
+.footer{border-top:1px solid var(--steel-border);padding:48px 0 40px;font-size:.92rem;color:var(--grey);background:var(--ink)}
 .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
 .footer strong{color:#fff;font-weight:600}
 .footer a{color:var(--silver)}
 .footer p+p{margin-top:6px}
-.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--steel-border);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 
 /* Mobile action bar */
 .mbar{display:none}
 
 @media (max-width:980px){
-  .hero-grid,.split,.aud,.contact-grid{grid-template-columns:1fr}
+  .hero-showcase,.split,.aud,.contact-grid{grid-template-columns:1fr}
   .split-side{position:static}
   .steps{grid-template-columns:1fr;margin-top:40px}
   .steps li{padding:0 0 32px 52px}
@@ -339,10 +460,10 @@ p{margin:0}
 }
 @media (max-width:860px){
   .menu-toggle{display:grid}
-  .nav{position:absolute;top:78px;left:0;right:0;background:var(--ink);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px clamp(20px,4vw,40px) 24px;display:none}
+  .nav{position:absolute;top:80px;left:0;right:0;background:var(--ink);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:8px;padding:16px clamp(20px,4vw,40px) 24px;display:none}
   .nav.open{display:flex}
-  .nav a{padding:16px 0;border-bottom:1px solid var(--line)}
-  .nav .btn{margin-top:16px;justify-content:center;border-bottom:0}
+  .nav-tab{padding:14px;border:1px solid var(--steel-border)}
+  .nav .btn{margin-top:10px;justify-content:center}
   .header-row{position:relative}
 }
 @media (max-width:720px){
@@ -354,7 +475,7 @@ p{margin:0}
   .tab{border-left:0;border-bottom:3px solid transparent;margin:0 0 -1px;white-space:nowrap;padding:16px 18px}
   .tab small{display:none}
   .tab[aria-selected="true"]{border-bottom-color:var(--teal)}
-  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(4,6,7,0.96);border-top:1px solid var(--line)}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(3,7,8,0.96);border-top:1px solid var(--line)}
   .mbar .btn{justify-content:center;padding:14px 12px}
   .brand-sub{display:none}
 }
@@ -363,22 +484,35 @@ p{margin:0}
   .band-item{border-left:0;padding-left:0}
   .band-item+.band-item{border-top:1px solid var(--line)}
 }
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .plan *{animation:none!important}
-  .plan .draw{stroke-dashoffset:0}
-  .plan .dev,.plan .cone{opacity:1}
-}
 </style>
 </head>
 <body>
 <a class="skip" href="#continut">Salt la conținut</a>
 
+<!-- Fundal viu cu circuite digitale animate -->
+<div class="bg-circuit" aria-hidden="true">
+  <svg class="circuit-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+    <path class="circuit-line" d="M100 0 V300 L250 450 H600 L750 600 V1080" />
+    <path class="circuit-line-fast" d="M1820 0 V220 L1680 360 H1300 L1150 510 V1080" />
+    <path class="circuit-line" d="M0 650 H400 L550 800 H950 L1100 950 H1920" />
+    <path class="circuit-line-fast" d="M0 250 H350 L500 100 H1400 L1550 250 H1920" />
+    <path class="circuit-line" d="M700 0 L850 150 V500 L950 600 H1450" />
+    <!-- Noduri iluminate -->
+    <circle class="node" cx="250" cy="450" r="3" style="animation-delay:0s"/>
+    <circle class="node" cx="600" cy="450" r="3" style="animation-delay:1.2s"/>
+    <circle class="node" cx="750" cy="600" r="3" style="animation-delay:2.4s"/>
+    <circle class="node" cx="1680" cy="360" r="3" style="animation-delay:0.7s"/>
+    <circle class="node" cx="1300" cy="360" r="3" style="animation-delay:1.9s"/>
+    <circle class="node" cx="550" cy="800" r="3" style="animation-delay:0.3s"/>
+    <circle class="node" cx="950" cy="800" r="3" style="animation-delay:2.1s"/>
+  </svg>
+</div>
+
 <header class="site-header">
   <div class="wrap header-row">
     <a class="brand" href="#top" aria-label="AEGIS Security Systems, pagina principală">
       <div class="brand-logo-wrap">
-        <img src="logo.jpg" alt="AEGIS Security Systems Logo" class="brand-img" onerror="this.src='protejat fara scris.jpeg'">
+        <img src="logo.jpg" alt="AEGIS Security Systems" class="brand-img" onerror="this.src='protejat fara scris.jpeg'">
       </div>
       <div class="brand-titles">
         <span class="brand-name">AEGIS</span>
@@ -389,11 +523,11 @@ p{margin:0}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav" id="nav" aria-label="Navigare principală">
-      <a href="#servicii">Servicii</a>
-      <a href="#produse">Echipamente & Soluții</a>
-      <a href="#clienti">Clienți</a>
-      <a href="#proces">Cum lucrăm</a>
-      <a href="#competente">Competențe</a>
+      <a href="#servicii" class="nav-tab">Servicii</a>
+      <a href="#produse" class="nav-tab">Echipamente & Soluții</a>
+      <a href="#clienti" class="nav-tab">Clienți</a>
+      <a href="#proces" class="nav-tab">Cum lucrăm</a>
+      <a href="#competente" class="nav-tab">Competențe</a>
       <a href="#contact" class="btn btn-primary btn-sm">Solicitați o ofertă</a>
     </nav>
   </div>
@@ -401,8 +535,8 @@ p{margin:0}
 
 <main id="continut">
 <section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
+  <div class="wrap">
+    <div class="hero-intro">
       <div class="hero-badge">Tehnician sisteme securitate &bull; Licență IGPR</div>
       <h1>Sisteme inteligente pentru un spațiu protejat</h1>
       <p class="hero-lead">Instalăm, configurăm și întreținem sisteme profesionale de alarmă antiefracție wireless Hikvision AX PRO, supraveghere video 4K HiLook, control acces și automatizări pentru porți în județul Constanța.</p>
@@ -415,7 +549,14 @@ p{margin:0}
       </div>
     </div>
 
-    <figure style="margin:0">
+    <!-- SHOWCASE: Sigla în stânga la dimensiune egală cu Planul locuinței din dreapta -->
+    <div class="hero-showcase">
+      <div class="logo-display-wrap">
+        <img src="logo.jpg" alt="Sigla oficială AEGIS Security Systems" class="logo-huge" onerror="this.src='protejat fara scris.jpeg'">
+        <div class="logo-tagline">AEGIS SECURITY SYSTEMS</div>
+        <div class="logo-subtagline">PFA ABALASEI NICU LAURENTIU &bull; CONSTANȚA</div>
+      </div>
+
       <div class="plan-wrap">
         <svg class="plan" viewBox="0 0 560 470" role="img" aria-labelledby="planT planD">
           <title id="planT">Schemă de securitate integrată</title>
@@ -427,7 +568,7 @@ p{margin:0}
             <path class="draw" pathLength="1" style="animation-delay:.5s" d="M30 250H130M190 250H400M460 250H530"/>
             <path class="draw" pathLength="1" style="animation-delay:.7s" d="M300 250V330M300 380V430"/>
           </g>
-          <g fill="none" stroke="#5c6870" stroke-width="1.5">
+          <g fill="none" stroke="#3d4d57" stroke-width="1.5">
             <path class="draw" pathLength="1" style="animation-delay:.9s" d="M90 430V370M150 430A60 60 0 0 0 90 370"/>
           </g>
 
@@ -439,14 +580,14 @@ p{margin:0}
           <!-- Detector PIR AX PRO -->
           <g class="dev" style="--d:2.1s">
             <path d="M415 46 370 118Q415 140 460 118Z" fill="rgba(28,207,192,.08)" stroke="#1CCFC0" stroke-width="1" stroke-dasharray="4 4"/>
-            <circle cx="415" cy="42" r="6" fill="#050505" stroke="#1CCFC0" stroke-width="2"/>
+            <circle cx="415" cy="42" r="6" fill="#030708" stroke="#1CCFC0" stroke-width="2"/>
             <text x="415" y="152" text-anchor="middle">Detector PIR 15m</text>
           </g>
 
           <!-- Camera 4K 2 -->
           <g class="dev" style="--d:2.3s">
             <path class="cone" d="M514 414 322 398 352 268Z" fill="rgba(28,207,192,.13)" stroke="#1CCFC0" stroke-opacity=".5"/>
-            <rect x="507" y="407" width="14" height="14" rx="2" fill="#050505" stroke="#1CCFC0" stroke-width="2"/>
+            <rect x="507" y="407" width="14" height="14" rx="2" fill="#030708" stroke="#1CCFC0" stroke-width="2"/>
           </g>
 
           <!-- Camera 4K 1 -->
@@ -454,7 +595,7 @@ p{margin:0}
             <g class="sweep">
               <path class="cone" d="M46 46 262 66 190 214Z" fill="rgba(28,207,192,.13)" stroke="#1CCFC0" stroke-opacity=".5"/>
             </g>
-            <rect x="39" y="39" width="14" height="14" rx="2" fill="#050505" stroke="#1CCFC0" stroke-width="2"/>
+            <rect x="39" y="39" width="14" height="14" rx="2" fill="#030708" stroke="#1CCFC0" stroke-width="2"/>
             <text x="62" y="36">Cameră 8MP IP</text>
           </g>
 
@@ -466,22 +607,22 @@ p{margin:0}
 
           <!-- Interfon IP & Acces -->
           <g class="dev" style="--d:2.7s">
-            <rect x="160" y="392" width="12" height="22" rx="2" fill="#050505" stroke="#1CCFC0" stroke-width="2"/>
+            <rect x="160" y="392" width="12" height="22" rx="2" fill="#030708" stroke="#1CCFC0" stroke-width="2"/>
             <circle cx="166" cy="398" r="1.800" fill="#1CCFC0"/>
             <text x="180" y="408">Videointerfon IP</text>
           </g>
 
           <!-- Centrală AX PRO -->
           <g class="dev" style="--d:2.9s">
-            <rect x="38" y="286" width="24" height="34" rx="2" fill="#050505" stroke="#C8D0D5" stroke-width="2"/>
+            <rect x="38" y="286" width="24" height="34" rx="2" fill="#030708" stroke="#C8D0D5" stroke-width="2"/>
             <circle cx="50" cy="296" r="2" fill="#1CCFC0"/>
-            <path d="M43 306h14M43 311h14" stroke="#8B969D" stroke-width="1.500"/>
+            <path d="M43 306h14M43 311h14" stroke="#85939b" stroke-width="1.500"/>
             <text x="70" y="307">Centrală AX PRO</text>
           </g>
         </svg>
+        <figcaption class="plan-cap"><span>Soluție completă de securitate adaptată obiectivului.</span><span>Constanța și împrejurimi.</span></figcaption>
       </div>
-      <figcaption class="plan-cap"><span>Soluție de securitate proiectată pe nevoi reale.</span><span>Constanța și împrejurimi.</span></figcaption>
-    </figure>
+    </div>
   </div>
 </section>
 
@@ -490,7 +631,7 @@ p{margin:0}
     <div class="band-item"><strong>Licență IGPR</strong><span>Instalare și întreținere sisteme antiefracție</span></div>
     <div class="band-item"><strong>Electrician autorizat</strong><span>Instalații electrice de joasă tensiune</span></div>
     <div class="band-item"><strong>Inginer specialist</strong><span>Proiectare, montaj curat și punere în funcțiune</span></div>
-    <div class="band-item"><strong>Constanța & Dobrogea</strong><span>Intervenție rapidă și asistență directă</span></div>
+    <div class="band-item"><strong>Constanța & Dobrogea</strong><span>Intervenție promptă și asistență directă</span></div>
   </div>
 </section>
 
@@ -543,7 +684,7 @@ p{margin:0}
         <ul class="prod-specs">
           <li>Acoperire volumetrică 15 metri la unghi de 90°</li>
           <li>Compensare digitală de temperatură și protecție antisabotaj</li>
-          <li>Rază lungă de transmisie radio securizată (până la 1600m în câmp deschis)</li>
+          <li>Rază lungă de transmisie radio securizată (până la 1600m în spațiu deschis)</li>
         </ul>
       </div>
 
@@ -567,7 +708,7 @@ p{margin:0}
         <div>
           <span class="prod-tag">Înregistrare & Procesare</span>
           <h4>NVR 8 Canale 4K HiLook (NVR-208MH-C)</h4>
-          <p>Unitate de stocare performantă cu suport pentru rezoluții ultra-HD 4K (8 Megapixeli) și vizualizare de pe mobil.</p>
+          <p>Unitate de stocare performantă cu suport pentru rezoluții ultra-HD 4K (8 Megapixeli) și vizualizare securizată pe mobil.</p>
         </div>
         <ul class="prod-specs">
           <li>Lățime de bandă de până la 80 Mbps și ieșire directă 4K HDMI</li>
@@ -580,7 +721,7 @@ p{margin:0}
         <div>
           <span class="prod-tag">Camere IP 8MP 4K</span>
           <h4>HiLook Dome & Bullet Smart Hybrid Light</h4>
-          <p>Camere cu vedere nocturnă duală: infraroșu invizibil sau iluminator alb pentru imagini color la detectarea intrușilor.</p>
+          <p>Camere cu vedere nocturnă duală: infraroșu invizibil sau iluminator alb pentru imagini clare color la detectarea intrușilor.</p>
         </div>
         <ul class="prod-specs">
           <li>Rezoluție 8 Megapixeli 4K cu lentilă unghi larg de 2.8 mm</li>
@@ -596,12 +737,12 @@ p{margin:0}
         <div>
           <span class="prod-tag">Videointerfon IP</span>
           <h4>Kit Videointerfon IP WiFi HiLook (VI-K43P)</h4>
-          <p>Răspundeți la poartă de pe monitorul tactil din casă sau direct de pe telefon, de oriunde v-ați afla în lume.</p>
+          <p>Răspundeți la poartă de pe monitorul tactil din casă sau direct de pe smartphone, de oriunde vă aflați.</p>
         </div>
         <ul class="prod-specs">
           <li>Post exterior Full HD 2MP cu unghi larg și infraroșu de noapte</li>
           <li>Monitor interior touchscreen color 7 inch de înaltă rezoluție</li>
-          <li>Alimentare integrată prin cablul de rețea (PoE) și stocare pe card SD</li>
+          <li>Alimentare unică prin cablul de rețea (PoE) și stocare pe card SD</li>
         </ul>
       </div>
 
@@ -609,12 +750,12 @@ p{margin:0}
         <div>
           <span class="prod-tag">Control Acces Sigur</span>
           <h4>Yală Electromagnetică DORCAS-54AADF Fail Secure</h4>
-          <p>Blocare mecanică solidă, combinată cu deschidere rapidă prin taguri de proximitate Mifare de 13.56 MHz.</p>
+          <p>Blocare mecanică solidă, combinată cu deschidere instantanee prin taguri de proximitate Mifare de 13.56 MHz.</p>
         </div>
         <ul class="prod-specs">
           <li>Forță de reținere la forțare de 330 Kgf cu memorie mecanică</li>
           <li>Suport ranforsat din inox (DORCAS-LX-22) și carcasă de protecție</li>
-          <li>Funcționare fiabilă chiar și în caz de întrerupere accidentală a tensiunii</li>
+          <li>Funcționare sigură chiar și în caz de întrerupere a tensiunii</li>
         </ul>
       </div>
     </div>
@@ -625,7 +766,7 @@ p{margin:0}
         <div>
           <span class="prod-tag">Automatizări Curte</span>
           <h4>Kit Automatizare Nice Wingo 2024 (2 canate x 2m / 200kg)</h4>
-          <p>Sistem italian recunoscut pentru anduranță, funcționare extrem de silențioasă și protecție împotriva strivirii.</p>
+          <p>Sistem italian recunoscut pentru anduranță, funcționare extrem de silențioasă și protecție activă împotriva strivirii.</p>
         </div>
         <ul class="prod-specs">
           <li>Motoare liniare sigure la 24 V, ciclu intens de lucru (30 cicluri/oră)</li>
@@ -637,7 +778,8 @@ p{margin:0}
   </div>
 </section>
 
-<section class="section on-paper" id="servicii">
+<!-- SECTIUNE SERVICII: Pe fundal Gri-Antracit Steel Tech -->
+<section class="section on-steel" id="servicii">
   <div class="wrap split">
     <div class="split-side">
       <h2>Ce instalăm și întreținem</h2>
@@ -648,15 +790,15 @@ p{margin:0}
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17v-6a6 6 0 1 1 12 0v6l1.500 2h-15z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></div>
         <div>
           <h3>Alarmă antiefracție</h3>
-          <p>Detectoare de mișcare, contacte pe uși și ferestre, sirene și centrală cu notificare în aplicație. Instalare curată, fără cabluri la vedere dacă se optează pentru variante radio.</p>
+          <p>Detectoare de mișcare, contacte pe uși și ferestre, sirene și centrală cu notificare în aplicație. Fără cabluri trase inestetic la vedere pe pereți.</p>
           <p class="note">Activitate desfășurată în baza licenței de funcționare IGPR.</p>
         </div>
       </li>
       <li>
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="10" rx="2"/><path d="m17 11 4-2v8l-4-2"/><circle cx="10" cy="12" r="2"/></svg></div>
         <div>
-          <h3>Supraveghere video IP</h3>
-          <p>Camere IP de înaltă rezoluție (până la 4K) cu identificare inteligentă a vehiculelor și persoanelor, vedere pe timp de noapte și arhivă video securizată pe disc dedicate.</p>
+          <h3>Supraveghere video IP 4K</h3>
+          <p>Camere IP de înaltă rezoluție cu identificare inteligentă a vehiculelor și persoanelor, vedere nocturnă color și arhivă video protejată pe disc dedicat.</p>
         </div>
       </li>
       <li>
@@ -670,21 +812,21 @@ p{margin:0}
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 5 13h6l-1 9 8-11h-6z"/></svg></div>
         <div>
           <h3>Instalații electrice și automatizări</h3>
-          <p>Circuite de alimentare dedicate, tablouri electrice de protecție și montaj automatizări pentru porți batante sau culisante.</p>
+          <p>Circuite de alimentare dedicate, tablouri electrice de protecție și montaj profesional pentru automatizări de porți.</p>
         </div>
       </li>
       <li>
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.700 6.300a4 4 0 0 0-5.400 5.200L3.500 17.300a2 2 0 0 0 3.200 3.200l5.800-5.800a4 4 0 0 0 5.200-5.400l-2.600 2.600-2.400-.6-.6-2.400z"/></svg></div>
         <div>
           <h3>Service și mentenanță periodică</h3>
-          <p>Diagnosticare, înlocuire acumulatori, remedierea cablajelor deteriorate și actualizări de firmware pentru securitate cibernetică maximă.</p>
+          <p>Diagnosticare, înlocuire acumulatori, remedierea cablajelor deteriorate și actualizări de securitate a dispozitivelor.</p>
         </div>
       </li>
     </ul>
   </div>
 </section>
 
-<section class="section" id="clienti">
+<section class="section on-panel" id="clienti">
   <div class="wrap">
     <h2>Soluții adaptate fiecărui obiectiv</h2>
     <p class="intro-p">Fiecare locație are puncte vulnerabile specifice. Iată cum abordăm fiecare scenariu:</p>
@@ -709,7 +851,7 @@ p{margin:0}
         </div>
         <div class="tabpanel" role="tabpanel" id="panel-com" aria-labelledby="tab-com" hidden>
           <h3>Securitate comercială și evidența accesului</h3>
-          <p class="lead">Soluții robuste pentru magazine, depozite și spații de birouri cu flux de personal.</p>
+          <p class="lead">Soluții robuste pentru magazine, depozite și birouri cu flux constant de personal.</p>
           <ul class="checks">
             <li>Partiționare logică a alarmei pe departamente și zone de acces</li>
             <li>Camere cu clasificare persoane/vehicule și înregistrare audio ambientală</li>
@@ -732,21 +874,21 @@ p{margin:0}
   </div>
 </section>
 
-<section class="section on-panel" id="proces" style="border-block:1px solid var(--line)">
+<section class="section on-steel" id="proces">
   <div class="wrap">
     <h2>Cum lucrăm</h2>
-    <p class="intro-p">Fără improvizații sau costuri ascunse. Fiecare etapă este stabilită clar de la început.</p>
+    <p class="intro-p">Fără improvizații sau costuri ascunse. Fiecare etapă este stabilită transparent de la început.</p>
     <ol class="steps">
-      <li><h3>Constatare la obiectiv</h3><p>Evaluăm configurația spațiului și stabilim exact traseele de cablu și poziția senzorilor.</p></li>
-      <li><h3>Ofertă transparentă</h3><p>Primiți un deviz tehnic și comercial detaliat cu fiecare piesă, specificație și manoperă inclusă.</p></li>
-      <li><h3>Montaj curat</h3><p>Lucrăm îngrijit, respectând structura pereților și standardele electrice în vigoare.</p></li>
-      <li><h3>Punere în funcțiune</h3><p>Configurăm aplicația pe telefoanele dumneavoastră și predăm integral toate parolele de administrator.</p></li>
+      <li><h3>Constatare la fața locului</h3><p>Evaluăm configurația spațiului și stabilim exact traseele de cablu și poziția optimă a senzorilor.</p></li>
+      <li><h3>Ofertă scrisă</h3><p>Primiți un deviz tehnic și comercial detaliat cu fiecare piesă, specificație și manoperă inclusă.</p></li>
+      <li><h3>Montaj curat</h3><p>Lucrăm îngrijit, respectând structura pereților și normele electrice în vigoare.</p></li>
+      <li><h3>Punere în funcțiune</h3><p>Configurăm aplicația pe telefoanele dumneavoastră și vă predăm integral toate conturile de administrator.</p></li>
       <li><h3>Garanție & Suport</h3><p>Asigurăm suport tehnic prompt, intervenții și revizii periodice pentru buna funcționare.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="section on-paper" id="competente">
+<section class="section on-panel" id="competente">
   <div class="wrap split">
     <div class="split-side">
       <h2>Calificări și autorizări</h2>
@@ -760,13 +902,13 @@ p{margin:0}
           <span class="yr">2026</span>
         </li>
         <li>
-          <h3>Tehnician sisteme de detecție, supraveghere video și control acces</h3>
-          <p>Certificat oficial de calificare tehnică.</p>
+          <h3>Tehnician sisteme de securitate</h3>
+          <p>Certificat oficial de calificare tehnică (detecție, supraveghere video și control acces).</p>
           <span class="yr">2015</span>
         </li>
         <li>
           <h3>Electrician în construcții</h3>
-          <p>Certificat de calificare nivel 3 (instalații de joasă tensiune).</p>
+          <p>Certificat de calificare nivel 3 (instalații electrice de joasă tensiune).</p>
           <span class="yr">2025</span>
         </li>
         <li>
@@ -780,8 +922,8 @@ p{margin:0}
           <span class="yr">2026</span>
         </li>
         <li>
-          <h3>Lucru la înălțime și în spații speciale</h3>
-          <p>Atestat securitate muncii pentru montaj exterior și structuri înalte.</p>
+          <h3>Lucru la înălțime și în condiții speciale</h3>
+          <p>Atestat de securitate pentru intervenții tehnice pe structuri înalte.</p>
           <span class="yr">2026</span>
         </li>
       </ul>
@@ -789,7 +931,7 @@ p{margin:0}
   </div>
 </section>
 
-<section class="section" id="contact">
+<section class="section on-steel" id="contact">
   <div class="wrap">
     <h2>Solicitați o evaluare sau o ofertă de preț</h2>
     <p class="intro-p">Răspundem prompt în municipiul Constanța și pe toată raza județului. Ne puteți contacta direct prin telefon, WhatsApp sau completând formularul de mai jos:</p>
@@ -799,7 +941,7 @@ p{margin:0}
         <li><span class="k">Telefon direct</span><a href="tel:+40741153476">0741 153 476</a></li>
         <li><span class="k">E-mail oficial</span><a href="mailto:abalaseipfa@gmail.com">abalaseipfa@gmail.com</a></li>
         <li><span class="k">Locație</span><span class="v plain">Constanța, str. Mihail Kogălniceanu nr. 27</span></li>
-        <li><span class="k">Zonă operare</span><span class="v plain">Constanța, Mamaia, Năvodari, Ovidiu, Eforie și localități limitrofe</span></li>
+        <li><span class="k">Zonă deservită</span><span class="v plain">Constanța, Mamaia, Năvodari, Ovidiu, Eforie și localități din județ</span></li>
       </ul>
 
       <form class="form" id="contactForm" novalidate>
@@ -810,19 +952,19 @@ p{margin:0}
             <div class="err" id="e-nume" role="alert"></div>
           </div>
           <div class="field">
-            <label for="f-tip">Tipul obiectivului</label>
+            <label for="f-tip">Tipul spațiului</label>
             <select id="f-tip" name="tip">
               <option>Locuință (Casă / Vilă)</option>
               <option>Apartament</option>
               <option>Spațiu comercial sau birou</option>
               <option>Asociație de proprietari / Bloc</option>
-              <option>Depozit / Hală industrială</option>
-              <option>Alt tip de spațiu</option>
+              <option>Depozit / Spațiu industrial</option>
+              <option>Alt tip</option>
             </select>
           </div>
         </div>
         <div class="field">
-          <label for="f-loc">Localitatea (ex: Constanța, Palazu, Mamaia etc.)</label>
+          <label for="f-loc">Localitatea (ex: Constanța, Năvodari, Palazu etc.)</label>
           <input id="f-loc" name="loc" type="text" autocomplete="address-level2">
         </div>
         <div class="field">
@@ -837,7 +979,7 @@ p{margin:0}
           </button>
           <button type="button" class="btn btn-ghost" id="sendMail">Trimiteți pe e-mail</button>
         </div>
-        <p class="form-note">Datele nu sunt transmise către servere externe. Butonul deschide direct conversația în WhatsApp cu mesajul precompletat.</p>
+        <p class="form-note">Datele nu sunt transmise către servere terțe. Butonul deschide direct aplicația WhatsApp cu mesajul precompletat.</p>
       </form>
     </div>
   </div>
@@ -850,7 +992,7 @@ p{margin:0}
       <div>
         <p><strong>AEGIS Security Systems</strong></p>
         <p>Sisteme inteligente pentru un spațiu protejat</p>
-        <p style="margin-top:12px; font-size:0.85rem; color:#6b767d">Soluții profesionale de securitate cibernetică și fizică.</p>
+        <p style="margin-top:10px; font-size:0.85rem; color:#6b7c85">Instalare autorizată sisteme antiefracție și supraveghere video.</p>
       </div>
       <div>
         <p><strong>Abalașei Nicu-Laurențiu PFA</strong></p>
@@ -886,7 +1028,6 @@ p{margin:0}
   toggle.addEventListener("click", function(){
     var open = nav.classList.toggle("open");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    toggle.setAttribute("aria-label", open ? "Închide meniul" : "Deschide meniul");
   });
   nav.addEventListener("click", function(e){
     if (e.target.tagName === "A") {
@@ -895,7 +1036,7 @@ p{margin:0}
     }
   });
 
-  // Taburi interactive Echipamente & Produse
+  // Taburi Catalog Produse
   var prodBtns = document.querySelectorAll(".prod-tab-btn");
   var prodPanels = document.querySelectorAll(".prod-panel");
   prodBtns.forEach(function(btn){
@@ -935,7 +1076,7 @@ p{margin:0}
 
   function validate(){
     var ok = true;
-    [["e-nume", nume, "Introduceți numele dumneavoastră."], ["e-msg", msg, "Descrieți pe scurt ce aveți nevoie."]].forEach(function(r){
+    [["e-nume", nume, "Introduceți numele."], ["e-msg", msg, "Introduceți mesajul."]].forEach(function(r){
       var el = document.getElementById(r[0]);
       var bad = !r[1].value.trim();
       el.textContent = bad ? r[2] : "";
